@@ -20,7 +20,7 @@ int main(void) {
 		for (j = 0; j < C; j++) {
 			if (0==fscanf(fp,"%f	", &M[i][j])) {
 				printf ("Error size matrix: i=%d, j=%d\n", i, j);
-				break;
+				return 0;
 			}	
 		}
 	}
@@ -46,14 +46,21 @@ int main(void) {
 	char path_result[strlen(path)+10], str[strlen(path)];
 	sprintf (path_result, "%s-column.txt", strncat(str, path, strlen(path)-4));
 	fp=fopen(path_result, "w");
+	if (fp==NULL) {
+		printf ("Error open file for result!");
+		return 0;
+	}
 	for (j = 0; j < R*C; j++) {
 		// printf ("%0.3f ", result[j]);
-		fprintf(fp, "%f\n", result[j]);
+		if(0>=fprintf(fp, "%f\n", result[j])) {
+			printf ("Error save result: j=%d\n", j);
+			return 0;
+		}
 	} 
 	fclose(fp);
 
 	printf ("Column convert matrix - DONE\n\n");
 
 	printf ("result path: %s\n", path_result);
-	return 0;
+	return 1;
 }
