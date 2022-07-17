@@ -21,5 +21,5 @@ gcc convert_matrix_to_column.c -o convert_matrix_to_column
 * Column convert matrix - DONE
 *
 * result path: C:\Users\alekc\OneDrive\Science\Project\ampl_62min-column.txt
-**
+*
 где result path - путь к файлу с результатом преобразования матрицы
