@@ -44,7 +44,10 @@ int main(void) {
 	printf ("\n");
 
 	char path_result[strlen(path)+10], str[strlen(path)];
-	sprintf (path_result, "%s-column.txt", strncpy(str, path, strlen(path)-4));
+	strcpy(str, path);
+	for (int i = 0; i < 4; ++i) { str[strlen(str)-1] = '\0'; }
+	sprintf (path_result, "%s-column.txt", str);
+	// printf ("result path: %s\n", path_result);
 	fp=fopen(path_result, "w");
 	if (fp==NULL) {
 		printf ("Error open file for result!");
